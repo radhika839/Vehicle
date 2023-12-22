@@ -3,8 +3,6 @@ import 'package:vehicle_workshop/pages/BottomNavigationBar.dart';
 import 'package:vehicle_workshop/pages/add.dart';
 import 'package:vehicle_workshop/pages/homePage2.dart';
 import 'package:vehicle_workshop/pages/image.dart';
-import 'package:vehicle_workshop/pages/new_customer_registration.dart';
-import 'package:vehicle_workshop/pages/edit.dart';
 import 'package:vehicle_workshop/pages/homePage.dart';
 import 'package:vehicle_workshop/pages/profilePage.dart';
 import 'package:vehicle_workshop/pages/searchPage.dart';
@@ -27,8 +25,7 @@ void main() {
       '/searchPage': (context) => SearchPage(),
       '/homePage': (context) => HomePage(),
       //'/edit': (context) => UpdateData(),
-      '/new_customer_registration': (context) =>
-          New_Customer_Registration_Page(),
+
       '/image': (context) => imagePickerPage(),
       '/add': (context) => AddPage(),
       '/view': (context) => ShowData(),
