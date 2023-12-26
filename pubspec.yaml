@@ -72,6 +72,9 @@ flutter:
       - assets/images/carlogo.jpg
       - assets/images/carbackground.jpg
       - assets/images/bg1.jpg
+      - assets/images/avatar.png
+      - assets/images/avatar2.png
+      - assets/images/avatar3.png
       
 
   

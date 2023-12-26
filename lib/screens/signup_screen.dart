@@ -38,8 +38,8 @@ class _SignUpPageState extends State<SignUpPage> {
     };
     //print(email);
     //print(password);
-    const url = 'http://192.168.1.3:8000/api/signUp';
-    //const url = 'http://192.168.1.4:8000/api/signin';
+    //const url = 'http://192.168.1.10:8000/api/signUp';
+    const url = 'http://192.168.1.4:8000/api/signUp';
     //print(url);
     final uri = Uri.parse(url);
     print(uri);
@@ -64,7 +64,12 @@ class _SignUpPageState extends State<SignUpPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Sign Up'),
+        backgroundColor: Colors.grey,
+        title: Text(
+          'Sign Up',
+          style: TextStyle(fontSize: 25),
+        ),
+        centerTitle: true,
       ),
       body: Container(
         child: Form(

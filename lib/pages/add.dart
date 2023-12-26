@@ -67,16 +67,22 @@ class _SignUpPageState extends State<AddPage> {
     return Scaffold(
       backgroundColor: Colors.blue.shade400,
       appBar: AppBar(
-        leading: IconButton(
-            tooltip: 'Back',
-            onPressed: () {
-              Navigator.pushNamed(context, '/homePage');
-            },
-            icon: Icon(
-              Icons.arrow_back_ios_new,
-              size: 30,
-            )),
-        backgroundColor: Colors.blue.shade700,
+        // title: Text(
+        //   'Customer Registration Form',
+        //   style: TextStyle(fontSize: 25),
+        // ),
+        // centerTitle: true,
+        // leading: IconButton(
+        //     tooltip: 'Back',
+        //     onPressed: () {
+        //       Navigator.pushNamed(context, '/homePage');
+        //     },
+        //     icon: Icon(
+        //       Icons.arrow_back_ios_new,
+        //       size: 30,
+        //     )),
+        backgroundColor: Colors.grey,
+        // backgroundColor: Colors.blue.shade700,
       ),
       body: Container(
         // height: 1500,
@@ -442,7 +448,7 @@ class _SignUpPageState extends State<AddPage> {
       "regular": regular
     };
     // print(body);
-    final url = 'http://192.168.1.3:8000/api/update/$id';
+    final url = 'http://192.168.1.4:8000/api/update/$id';
     final uri = Uri.parse(url);
     print(uri);
     final response = await http.put(
@@ -493,7 +499,7 @@ class _SignUpPageState extends State<AddPage> {
     //print(email);
     //print(tel);
     // print(last);
-    const url = 'http://192.168.1.3:8000/api/insertdata';
+    const url = 'http://192.168.1.4:8000/api/insertdata';
     //const url = 'http://192.168.1.4:8000/api/signin';
     //print(jsonEncode(body));
     final uri = Uri.parse(url);

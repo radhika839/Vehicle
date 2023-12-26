@@ -30,8 +30,8 @@ class _SignInPageState extends State<SignInPage> {
     final body = {'email': email, 'password': password};
     //print(email);
     //print(password);
-    const url = 'http://192.168.1.3:8000/api/signIn';
-    //const url = 'http://192.168.1.4:8000/api/signin';
+    // const url = 'http://192.168.1.10:8000/api/signIn';
+    const url = 'http://192.168.1.4:8000/api/signIn';
     //print(url);
     print(jsonEncode(body));
     final uri = Uri.parse(url);
@@ -56,7 +56,12 @@ class _SignInPageState extends State<SignInPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Sign In'),
+        backgroundColor: Colors.grey,
+        title: Text(
+          'Sign In',
+          style: TextStyle(fontSize: 25),
+        ),
+        centerTitle: true,
       ),
       body: Container(
         padding: EdgeInsets.symmetric(vertical: 100, horizontal: 200),

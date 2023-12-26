@@ -44,157 +44,171 @@ class _MainScreenState extends State<MainScreen> {
       body: Container(
         decoration: BoxDecoration(
           image: DecorationImage(
-              opacity: 0.15,
+              opacity: 0.5,
               image: AssetImage('assets/images/bg1.jpg'),
               fit: BoxFit.cover),
         ),
-        child: ListView.builder(
-            itemCount: 1,
-            itemBuilder: (context, index) {
-              return SingleChildScrollView(
-                scrollDirection: Axis.horizontal,
-                child: Padding(
-                  padding: const EdgeInsets.fromLTRB(200.0, 50, 0, 50),
-                  child: DataTable(
-                    border: TableBorder.all(color: Colors.black12, width: 0.3),
-                    columnSpacing: 10,
-                    horizontalMargin: 10,
-                    // minWidth: 600,
-                    columns: [
-                      DataColumn(
-                          label: Text(
-                        'User Id',
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold, fontSize: 18),
-                      )),
-                      DataColumn(
-                          label: Text(
-                        'First Name',
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold, fontSize: 18),
-                      )),
-                      DataColumn(
-                          label: Text(
-                        'Last Name',
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold, fontSize: 18),
-                      )),
-                      DataColumn(
-                          label: Text(
-                        'Email Id',
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold, fontSize: 18),
-                      )),
-                      // DataColumn(
-                      //     label: Text(
-                      //   'Create Date',
-                      //   style:
-                      //       TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
-                      // )),
-                      // DataColumn(
-                      //     label: Text(
-                      //   'Vehicle No',
-                      //   style:
-                      //       TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
-                      // )),
-                      // DataColumn(
-                      //     label: Text(
-                      //   'Vehicle Make',
-                      //   style:
-                      //       TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
-                      // )),
-                      // DataColumn(
-                      //     label: Text(
-                      //   'Telephone No',
-                      //   style:
-                      //       TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
-                      // )),
-                      // DataColumn(
-                      //     label: Text(
-                      //   'KMS',
-                      //   style:
-                      //       TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
-                      // )),
-                      // DataColumn(
-                      //     label: Text(
-                      //   'Fuel',
-                      //   style:
-                      //       TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
-                      // )),
-                      // DataColumn(
-                      //     label: Text(
-                      //   'Items',
-                      //   style:
-                      //       TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
-                      // )),
-                      DataColumn(
-                          label: Text(
-                        'Custmoer Complaints',
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold, fontSize: 18),
-                      )),
-                      // DataColumn(
-                      //     label: Text(
-                      //   'image',
-                      //   style:
-                      //       TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
-                      // )),
-                      DataColumn(
-                          label: Text('view All Data',
+        child: Container(
+          child: Padding(
+            padding: const EdgeInsets.fromLTRB(200, 70, 200, 100),
+            child: Card(
+              color: Colors.purple.shade50,
+              child: ListView.builder(
+                  itemCount: 1,
+                  itemBuilder: (context, index) {
+                    return SingleChildScrollView(
+                      scrollDirection: Axis.horizontal,
+                      child: Padding(
+                        padding: const EdgeInsets.fromLTRB(100.0, 50, 0, 50),
+                        child: DataTable(
+                          border: TableBorder.all(
+                              color: Colors.black12, width: 0.3),
+                          columnSpacing: 10,
+                          horizontalMargin: 10,
+                          // minWidth: 600,
+                          columns: [
+                            DataColumn(
+                                label: Text(
+                              'User Id',
                               style: TextStyle(
-                                  fontSize: 18, fontWeight: FontWeight.bold))),
-                    ],
-                    rows: List.generate(
-                      vdetails.length,
-                      (index) {
-                        final item = vdetails[index];
-                        final id = item['id'].toString();
-                        //print(item);
-                        return DataRow(
-                          cells: [
-                            DataCell(
-                              Text('${index + 1}'),
-                            ),
-                            // DataCell(Text(item['id'].toString())),
-                            DataCell(Text(item['name'].toString())),
-                            DataCell(Text(item['last'].toString())),
-                            DataCell(Text(item['email'].toString())),
-                            // DataCell(Text(item['date'].toString())),
-                            // DataCell(Text(item['Vno'].toString())),
-                            // DataCell(Text(item['Vmake'].toString())),
-                            // DataCell(Text(item['tel'].toString())),
-                            // DataCell(Text(item['kms'].toString())),
-                            // DataCell(Text(item['E'].toString())),
-                            // DataCell(Text(item['item'].toString())),
-                            DataCell(Text(item['regular'].toString())),
-                            // DataCell(
-                            //   Image.network(item['front'].toString()),
-                            // ),
-                            DataCell(TextButton(
-                              onPressed: () {
-                                fetchById(id);
-                              },
-                              child: Text(
-                                'View',
-                                style: TextStyle(
-                                    fontSize: 18, color: Colors.green.shade900),
-                              ),
+                                  fontWeight: FontWeight.bold, fontSize: 18),
                             )),
+                            DataColumn(
+                                label: Text(
+                              'First Name',
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold, fontSize: 18),
+                            )),
+                            DataColumn(
+                                label: Text(
+                              'Last Name',
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold, fontSize: 18),
+                            )),
+                            DataColumn(
+                                label: Text(
+                              'Email Id',
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold, fontSize: 18),
+                            )),
+                            // DataColumn(
+                            //     label: Text(
+                            //   'Create Date',
+                            //   style:
+                            //       TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+                            // )),
+                            // DataColumn(
+                            //     label: Text(
+                            //   'Vehicle No',
+                            //   style:
+                            //       TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+                            // )),
+                            // DataColumn(
+                            //     label: Text(
+                            //   'Vehicle Make',
+                            //   style:
+                            //       TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+                            // )),
+                            // DataColumn(
+                            //     label: Text(
+                            //   'Telephone No',
+                            //   style:
+                            //       TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+                            // )),
+                            // DataColumn(
+                            //     label: Text(
+                            //   'KMS',
+                            //   style:
+                            //       TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+                            // )),
+                            // DataColumn(
+                            //     label: Text(
+                            //   'Fuel',
+                            //   style:
+                            //       TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+                            // )),
+                            // DataColumn(
+                            //     label: Text(
+                            //   'Items',
+                            //   style:
+                            //       TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+                            // )),
+                            DataColumn(
+                                label: Text(
+                              'Custmoer Complaints',
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold, fontSize: 18),
+                            )),
+                            // DataColumn(
+                            //     label: Text(
+                            //   'image',
+                            //   style:
+                            //       TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+                            // )),
+                            DataColumn(
+                                label: Text('view All Data',
+                                    style: TextStyle(
+                                        fontSize: 18,
+                                        fontWeight: FontWeight.bold))),
                           ],
-                        );
-                      },
-                    ).toList(),
-                  ),
-                ),
-              );
-            }),
+                          rows: List.generate(
+                            vdetails.length,
+                            (index) {
+                              final item = vdetails[index];
+                              final id = item['id'].toString();
+                              //print(item);
+                              return DataRow(
+                                onLongPress: () {
+                                  fetchById(id);
+                                },
+                                cells: [
+                                  DataCell(
+                                    Text('${index + 1}'),
+                                  ),
+                                  // DataCell(Text(item['id'].toString())),
+                                  DataCell(Text(item['name'].toString())),
+                                  DataCell(Text(item['last'].toString())),
+                                  DataCell(Text(item['email'].toString())),
+                                  // DataCell(Text(item['date'].toString())),
+                                  // DataCell(Text(item['Vno'].toString())),
+                                  // DataCell(Text(item['Vmake'].toString())),
+                                  // DataCell(Text(item['tel'].toString())),
+                                  // DataCell(Text(item['kms'].toString())),
+                                  // DataCell(Text(item['E'].toString())),
+                                  // DataCell(Text(item['item'].toString())),
+                                  DataCell(Text(item['regular'].toString())),
+                                  // DataCell(
+                                  //   Image.network(item['front'].toString()),
+                                  // ),
+                                  DataCell(TextButton(
+                                    onPressed: () {
+                                      fetchById(id);
+                                    },
+                                    child: Text(
+                                      'View',
+                                      style: TextStyle(
+                                          fontSize: 18,
+                                          color: Colors.green.shade900),
+                                    ),
+                                  )),
+                                ],
+                              );
+                            },
+                          ).toList(),
+                        ),
+                      ),
+                    );
+                  }),
+            ),
+          ),
+        ),
       ),
     );
   }
 
   Future<void> fetchById(String id) async {
     print(id);
-    final url = 'http://192.168.1.3:8000/api/srecord/$id';
+    final url = 'http://192.168.1.4:8000/api/srecord/$id';
     final uri = Uri.parse(url);
     print(uri);
     final response = await http.get(
@@ -220,7 +234,7 @@ class _MainScreenState extends State<MainScreen> {
   }
 
   Future<void> fetchData() async {
-    final url = 'http://192.168.1.3:8000/api/view?search=';
+    final url = 'http://192.168.1.4:8000/api/view?search=';
     final uri = Uri.parse(url);
     final response = await http.get(uri);
     if (response.statusCode == 200) {

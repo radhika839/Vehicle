@@ -30,14 +30,12 @@ class _HomePageState extends State<HomePage> {
     width = MediaQuery.of(context).size.width;
     return Scaffold(
         appBar: AppBar(
-          leading: IconButton(
-              onPressed: () {
-                Navigator.pushNamed(context, '/signIn_screen');
-              },
-              icon: Icon(
-                Icons.arrow_back_ios_new,
-                color: Colors.black,
-              )),
+          title: Text(
+            'Customer Details List',
+            style: TextStyle(fontSize: 25),
+          ),
+          centerTitle: true,
+          backgroundColor: Colors.grey,
         ),
         body: Container(
           color: Colors.black,
@@ -94,7 +92,7 @@ class _HomePageState extends State<HomePage> {
                 width: width * 1.0,
               ),
               Container(
-                color: Colors.grey,
+                color: Colors.purple.shade50,
                 child: ListView.builder(
                     scrollDirection: Axis.vertical,
                     itemCount: 1,
@@ -269,7 +267,7 @@ class _HomePageState extends State<HomePage> {
   }
 
   Future<void> deleteById(String id) async {
-    final url = 'http://192.168.1.3:8000/api/delete/$id';
+    final url = 'http://192.168.1.4:8000/api/delete/$id';
     final uri = Uri.parse(url);
     final response = await http.delete(uri);
     if (response.statusCode == 200) {
@@ -283,7 +281,7 @@ class _HomePageState extends State<HomePage> {
   }
 
   Future<void> fetchData() async {
-    final url = 'http://192.168.1.3:8000/api/view?search=';
+    final url = 'http://192.168.1.4:8000/api/view?search=';
     final uri = Uri.parse(url);
     final response = await http.get(uri);
     if (response.statusCode == 200) {
