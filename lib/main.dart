@@ -17,7 +17,7 @@ void main() {
     initialRoute: '/',
     routes: {
       '/': (context) => MainScreen(),
-      // '/': (context) => WelcomeScreen(),
+      //'/welcome_screen2': (context) => MainScreen(),
       '/signIn_screen': (context) => SignInPage(),
       '/signup_screen': (context) => SignUpPage(),
       '/BottomNavigationBar': (context) => MyBottomNavigationBar(),

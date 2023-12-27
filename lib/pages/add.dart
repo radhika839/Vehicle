@@ -395,9 +395,6 @@ class _SignUpPageState extends State<AddPage> {
                           EController.text.toString(),
                           //  jack.toString(),
                           regularController.text.toString());
-                  showSuccessMessage(isEdit
-                      ? 'Upadtion Has been Created Successfully'
-                      : 'Registration Has been Created Successfully');
                 },
                 child: Text(
                   isEdit ? 'Update' : 'Submit',
@@ -450,7 +447,7 @@ class _SignUpPageState extends State<AddPage> {
     // print(body);
     final url = 'http://192.168.1.4:8000/api/update/$id';
     final uri = Uri.parse(url);
-    print(uri);
+    // print(uri);
     final response = await http.put(
       uri,
       body: jsonEncode(body),
@@ -460,7 +457,7 @@ class _SignUpPageState extends State<AddPage> {
     // print(response.statusCode);
     // print(response.body);
     if (response.statusCode == 200) {
-      showSuccessMessage('Updation success');
+      showSuccessMessage('Updation Has Been Created Successfully');
       setState(() {
         Navigator.pushNamed(context, '/homePage');
       });
@@ -481,7 +478,7 @@ class _SignUpPageState extends State<AddPage> {
       String E,
       //  String item,
       String regular) async {
-    print('hey');
+    //print('hey');
     final body = {
       "name": name,
       "last": last,
@@ -503,19 +500,19 @@ class _SignUpPageState extends State<AddPage> {
     //const url = 'http://192.168.1.4:8000/api/signin';
     //print(jsonEncode(body));
     final uri = Uri.parse(url);
-    print(uri);
+    // print(uri);
     final response = await http.post(
       uri,
       body: jsonEncode(body),
       headers: {'Content-Type': 'application/json'},
     );
-    print(response.statusCode);
-    print(response.body);
+    //  print(response.statusCode);
+    // print(response.body);
     final message = jsonDecode(response.body);
     //print(message);
 
     if (message['Registered'] == "Successfully") {
-      print('signUp successfully');
+      showSuccessMessage('Registration Created Successfully');
       Navigator.pushNamed(context, '/homePage');
     } else {
       print('failed');

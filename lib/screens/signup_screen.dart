@@ -42,7 +42,7 @@ class _SignUpPageState extends State<SignUpPage> {
     const url = 'http://192.168.1.4:8000/api/signUp';
     //print(url);
     final uri = Uri.parse(url);
-    print(uri);
+    //print(uri);
     final response = await http.post(
       uri,
       body: jsonEncode(body),
@@ -53,7 +53,7 @@ class _SignUpPageState extends State<SignUpPage> {
     // print(message);
 
     if (response.body == "Successfully Registerd") {
-      print('signUp successfully');
+      showSuccessMessage('Sign Up Has been Created Successfully');
       Navigator.pushNamed(context, '/signIn_screen');
     } else {
       print('failed');
@@ -179,8 +179,6 @@ class _SignUpPageState extends State<SignUpPage> {
                           emailController.text.toString(),
                           passwordController.text.toString(),
                           confirmPasswordController.text.toString());
-                      showSuccessMessage(
-                          'Sign Up Has been Created Successfully');
                     }
                   },
                   child: Text(

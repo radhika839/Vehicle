@@ -26,7 +26,6 @@ class _SignInPageState extends State<SignInPage> {
   }
 
   Future<void> loginscreen(String email, String password) async {
-    //print('hey');
     final body = {'email': email, 'password': password};
     //print(email);
     //print(password);
@@ -40,12 +39,13 @@ class _SignInPageState extends State<SignInPage> {
       body: jsonEncode(body),
       headers: {'Content-Type': 'application/json'},
     );
-    print(response.body);
+    //  print(response.body);
     final message = jsonDecode(response.body);
-    print(message['Login']);
+    // print(message['Login']);
 
     if (message['Login'] == "successfully") {
-      print('login successfully');
+      // print('login successfully');
+      showSuccessMessage('Login Successfully');
       Navigator.pushNamed(context, '/BottomNavigationBar');
     } else {
       print('failed');
@@ -120,7 +120,6 @@ class _SignInPageState extends State<SignInPage> {
                 width: 310,
                 child: ElevatedButton(
                   onPressed: () {
-                    // print('jhgjh');
                     if (_formkey.currentState!.validate()) {
                       loginscreen(emailController.text.toString(),
                           passwordController.text.toString());
@@ -161,5 +160,10 @@ class _SignInPageState extends State<SignInPage> {
         ),
       ),
     );
+  }
+
+  void showSuccessMessage(String message) {
+    final snackBar = SnackBar(content: Text(message));
+    ScaffoldMessenger.of(context).showSnackBar(snackBar);
   }
 }
