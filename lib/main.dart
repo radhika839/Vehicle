@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:vehicle_workshop/pages/BottomNavigationBar.dart';
 import 'package:vehicle_workshop/pages/add.dart';
-import 'package:vehicle_workshop/pages/homePage2.dart';
+import 'package:vehicle_workshop/pages/addProduct.dart';
+import 'package:vehicle_workshop/pages/addlabour.dart';
 import 'package:vehicle_workshop/pages/image.dart';
 import 'package:vehicle_workshop/pages/homePage.dart';
-import 'package:vehicle_workshop/pages/profilePage.dart';
-import 'package:vehicle_workshop/pages/searchPage.dart';
+import 'package:vehicle_workshop/pages/labour.dart';
+import 'package:vehicle_workshop/pages/product.dart';
 import 'package:vehicle_workshop/pages/view.dart';
 import 'package:vehicle_workshop/screens/signIn_screen.dart';
 import 'package:vehicle_workshop/screens/signup_screen.dart';
@@ -21,15 +22,16 @@ void main() {
       '/signIn_screen': (context) => SignInPage(),
       '/signup_screen': (context) => SignUpPage(),
       '/BottomNavigationBar': (context) => MyBottomNavigationBar(),
-      '/profilePage': (context) => ProfilePage(),
-      '/searchPage': (context) => SearchPage(),
+      '/labour': (context) => LabourData(),
+      '/searchPage': (context) => ProductPage(),
       '/homePage': (context) => HomePage(),
       //'/edit': (context) => UpdateData(),
-
+      '/product': (context) => ProductPage(),
       '/image': (context) => imagePickerPage(),
       '/add': (context) => AddPage(),
+      '/addProduct': (context) => AddProduct(),
+      '/addlabour': (context) => AddLabour(),
       '/view': (context) => ShowData(),
-      '/homePage2': (context) => HomePage2(),
     },
     debugShowCheckedModeBanner: false,
   ));

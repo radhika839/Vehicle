@@ -20,7 +20,7 @@ class _ShowDataState extends State<ShowData> {
           'Customer Details',
         ),
         centerTitle: true,
-        backgroundColor: Colors.grey,
+        backgroundColor: Colors.cyan.shade700,
       ),
       body: Padding(
         padding: const EdgeInsets.fromLTRB(400, 70, 350, 100),

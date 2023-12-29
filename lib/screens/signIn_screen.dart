@@ -56,7 +56,7 @@ class _SignInPageState extends State<SignInPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.grey,
+        backgroundColor: Colors.cyan.shade700,
         title: Text(
           'Sign In',
           style: TextStyle(fontSize: 25),

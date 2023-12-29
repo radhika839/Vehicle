@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:vehicle_workshop/pages/homePage.dart';
-import 'package:vehicle_workshop/pages/homePage2.dart';
-import 'package:vehicle_workshop/pages/profilePage.dart';
-import 'package:vehicle_workshop/pages/searchPage.dart';
+import 'package:vehicle_workshop/pages/labour.dart';
+import 'package:vehicle_workshop/pages/product.dart';
 
 class MyBottomNavigationBar extends StatefulWidget {
   const MyBottomNavigationBar({super.key});
@@ -13,7 +12,7 @@ class MyBottomNavigationBar extends StatefulWidget {
 
 class _MyBottomNavigationBarState extends State<MyBottomNavigationBar> {
   int currentIndex = 0;
-  final List<Widget> children = [HomePage(), SearchPage(), ProfilePage()];
+  final List<Widget> children = [HomePage(), ProductPage(), LabourData()];
   void onTappedBar(int index) {
     setState(() {
       currentIndex = index;
@@ -24,15 +23,20 @@ class _MyBottomNavigationBarState extends State<MyBottomNavigationBar> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(child: children[currentIndex]),
-      bottomNavigationBar: BottomNavigationBar(
-          backgroundColor: Colors.white,
-          onTap: onTappedBar,
-          currentIndex: currentIndex,
-          items: [
-            BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
-            BottomNavigationBarItem(icon: Icon(Icons.search), label: 'Search'),
-            BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Profile'),
-          ]),
+      bottomNavigationBar: Stack(children: [
+        BottomNavigationBar(
+            //  type: BottomNavigationBarType.shifting,
+            backgroundColor: Colors.white,
+            onTap: onTappedBar,
+            currentIndex: currentIndex,
+            items: [
+              BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
+              BottomNavigationBarItem(
+                  icon: Icon(Icons.shopping_cart), label: 'Product'),
+              BottomNavigationBarItem(
+                  icon: Icon(Icons.person), label: 'Labour'),
+            ]),
+      ]),
     );
   }
 }

@@ -81,8 +81,7 @@ class _SignUpPageState extends State<AddPage> {
         //       Icons.arrow_back_ios_new,
         //       size: 30,
         //     )),
-        backgroundColor: Colors.grey,
-        // backgroundColor: Colors.blue.shade700,
+        backgroundColor: Colors.cyan.shade700,
       ),
       body: Container(
         // height: 1500,
@@ -97,11 +96,6 @@ class _SignUpPageState extends State<AddPage> {
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            // Image.asset(
-            //   'assets/images/carimage.jpg',
-            //   height: 250,
-            //   fit: BoxFit.cover,
-            // ),
             SizedBox(height: 20),
             Text(
               isEdit
@@ -459,7 +453,7 @@ class _SignUpPageState extends State<AddPage> {
     if (response.statusCode == 200) {
       showSuccessMessage('Updation Has Been Created Successfully');
       setState(() {
-        Navigator.pushNamed(context, '/homePage');
+        Navigator.pushNamed(context, '/BottomNavigationBar');
       });
     } else {
       showFailedMessage('Updation failed');

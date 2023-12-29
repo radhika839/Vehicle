@@ -34,7 +34,7 @@ class _HomePageState extends State<HomePage> {
             style: TextStyle(fontSize: 25),
           ),
           centerTitle: true,
-          backgroundColor: Colors.grey,
+          backgroundColor: Colors.cyan.shade700,
         ),
         body: Container(
           color: Colors.black,
@@ -130,7 +130,10 @@ class _HomePageState extends State<HomePage> {
                                       onPressed: () {
                                         fetchData();
                                       },
-                                      child: Text('search')),
+                                      child: Text(
+                                        'search',
+                                        style: TextStyle(color: Colors.black),
+                                      )),
                                 ),
                                 Padding(
                                   padding: const EdgeInsets.fromLTRB(
@@ -241,15 +244,13 @@ class _HomePageState extends State<HomePage> {
                                     rows: List.generate(
                                       vdetails.length,
                                       (index) {
-                                        final item = vdetails[index];
+                                        var item = vdetails[index];
                                         final id = item['id'].toString();
 
                                         // print(item);
                                         return DataRow(
-                                            onSelectChanged: (bool? select) {
-                                              if (select!) {
-                                                fetchById(id);
-                                              }
+                                            onLongPress: () {
+                                              fetchById(id);
                                             },
                                             cells: [
                                               DataCell(

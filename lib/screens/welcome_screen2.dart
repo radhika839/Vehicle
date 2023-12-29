@@ -26,7 +26,7 @@ class _MainScreenState extends State<MainScreen> {
     return Scaffold(
       // backgroundColor: Colors.grey.shade500,
       appBar: AppBar(
-        backgroundColor: Colors.grey,
+        backgroundColor: Colors.cyan.shade700,
         leading: IconButton(
           icon: const Icon(
             Icons.menu,
@@ -49,7 +49,7 @@ class _MainScreenState extends State<MainScreen> {
           ),
           child: Container(
             child: Padding(
-              padding: const EdgeInsets.fromLTRB(130, 70, 200, 100),
+              padding: const EdgeInsets.fromLTRB(180, 70, 230, 150),
               child: Card(
                 color: Colors.purple.shade50,
                 child: ListView.builder(
@@ -58,7 +58,7 @@ class _MainScreenState extends State<MainScreen> {
                       return SingleChildScrollView(
                         scrollDirection: Axis.horizontal,
                         child: Padding(
-                          padding: const EdgeInsets.fromLTRB(100.0, 50, 0, 50),
+                          padding: const EdgeInsets.fromLTRB(15.0, 50, 20, 50),
                           child: DataTable(
                             showCheckboxColumn: false,
                             border: TableBorder.all(
