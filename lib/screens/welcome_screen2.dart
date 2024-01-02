@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:convert';
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:http/http.dart' as http;
 
 var store;
@@ -24,168 +25,296 @@ class _MainScreenState extends State<MainScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // backgroundColor: Colors.grey.shade500,
       appBar: AppBar(
         backgroundColor: Colors.cyan.shade700,
-        leading: IconButton(
-          icon: const Icon(
-            Icons.menu,
-          ),
-          onPressed: () {
-            Navigator.pushNamed(context, '/signIn_screen');
-          },
-          tooltip: 'Sign In',
+        title: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            SizedBox(
+              width: 480,
+            ),
+            Text('Vehicle WorkShop'),
+            SizedBox(
+              width: 480,
+            ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    padding:
+                        EdgeInsets.symmetric(vertical: 0.1, horizontal: 0.1),
+                    backgroundColor: Colors.amber,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                  ),
+                  onPressed: () {
+                    Navigator.pushNamed(context, '/signIn_screen');
+                  },
+                  child: Text(
+                    'Log In',
+                    style: TextStyle(color: Colors.black),
+                  )),
+            ),
+          ],
         ),
-        title: Text('Vehicle WorkShop'),
         centerTitle: true,
       ),
       body: Container(
         child: Container(
-          decoration: BoxDecoration(
-            image: DecorationImage(
-                opacity: 0.5,
-                image: AssetImage('assets/images/bg1.jpg'),
-                fit: BoxFit.cover),
-          ),
           child: Container(
             child: Padding(
-              padding: const EdgeInsets.fromLTRB(180, 70, 230, 150),
-              child: Card(
-                color: Colors.purple.shade50,
-                child: ListView.builder(
-                    itemCount: 1,
-                    itemBuilder: (context, index) {
-                      return SingleChildScrollView(
-                        scrollDirection: Axis.horizontal,
+              padding: const EdgeInsets.fromLTRB(400, 50, 350, 100),
+              child: ListView.builder(
+                  itemCount: vdetails.length,
+                  itemBuilder: (context, index) {
+                    final item = vdetails[index];
+                    final id = item['id'].toString();
+                    return SingleChildScrollView(
+                      scrollDirection: Axis.horizontal,
+                      child: GestureDetector(
+                        onTap: () {
+                          fetchById(id);
+                        },
                         child: Padding(
-                          padding: const EdgeInsets.fromLTRB(15.0, 50, 20, 50),
-                          child: DataTable(
-                            showCheckboxColumn: false,
-                            border: TableBorder.all(
-                                color: Colors.black12, width: 0.3),
-                            // columnSpacing: 10,
-                            // horizontalMargin: 10,
-                            // minWidth: 600,
-                            columns: [
-                              DataColumn(
-                                  label: Text(
-                                'User Id',
-                                style: TextStyle(
-                                    fontWeight: FontWeight.bold, fontSize: 18),
-                              )),
-                              DataColumn(
-                                  label: Text(
-                                'First Name',
-                                style: TextStyle(
-                                    fontWeight: FontWeight.bold, fontSize: 18),
-                              )),
-                              DataColumn(
-                                  label: Text(
-                                'Last Name',
-                                style: TextStyle(
-                                    fontWeight: FontWeight.bold, fontSize: 18),
-                              )),
-                              DataColumn(
-                                  label: Text(
-                                'Email Id',
-                                style: TextStyle(
-                                    fontWeight: FontWeight.bold, fontSize: 18),
-                              )),
-                              // DataColumn(
-                              //     label: Text(
-                              //   'Create Date',
-                              //   style:
-                              //       TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
-                              // )),
-                              // DataColumn(
-                              //     label: Text(
-                              //   'Vehicle No',
-                              //   style:
-                              //       TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
-                              // )),
-                              // DataColumn(
-                              //     label: Text(
-                              //   'Vehicle Make',
-                              //   style:
-                              //       TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
-                              // )),
-                              // DataColumn(
-                              //     label: Text(
-                              //   'Telephone No',
-                              //   style:
-                              //       TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
-                              // )),
-                              // DataColumn(
-                              //     label: Text(
-                              //   'KMS',
-                              //   style:
-                              //       TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
-                              // )),
-                              // DataColumn(
-                              //     label: Text(
-                              //   'Fuel',
-                              //   style:
-                              //       TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
-                              // )),
-                              // DataColumn(
-                              //     label: Text(
-                              //   'Items',
-                              //   style:
-                              //       TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
-                              // )),
-                              DataColumn(
-                                  label: Text(
-                                'Customer Complaints',
-                                style: TextStyle(
-                                    fontWeight: FontWeight.bold, fontSize: 18),
-                              )),
-                              // DataColumn(
-                              //     label: Text(
-                              //   'image',
-                              //   style:
-                              //       TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
-                              // )),
-                            ],
-                            rows: List.generate(
-                              vdetails.length,
-                              (index) {
-                                final item = vdetails[index];
-                                final id = item['id'].toString();
-                                //print(item);
-                                return DataRow(
-                                  onSelectChanged: (bool? select) {
-                                    if (select!) {
-                                      fetchById(id);
-                                    }
-                                  },
-                                  cells: [
-                                    DataCell(
-                                      Text('${index + 1}'),
+                          padding: const EdgeInsets.fromLTRB(0, 5, 500, 0),
+                          child: Container(
+                            child: Padding(
+                              padding: const EdgeInsets.fromLTRB(0, 10, 0, 5),
+                              child: Card(
+                                margin: EdgeInsets.symmetric(
+                                    vertical: 10, horizontal: 50),
+                                shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(20)),
+                                clipBehavior: Clip.antiAliasWithSaveLayer,
+                                color: Colors.purple.shade50,
+                                child: Container(
+                                  decoration: BoxDecoration(
+                                      gradient: LinearGradient(
+                                    begin: Alignment.topRight,
+                                    end: Alignment.bottomLeft,
+                                    colors: [
+                                      Colors.green.shade100,
+                                      Colors.cyan,
+                                    ],
+                                  )),
+                                  child: Padding(
+                                    padding: const EdgeInsets.fromLTRB(
+                                        30, 10, 50, 5),
+                                    child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                          children: [
+                                            Padding(
+                                              padding:
+                                                  const EdgeInsets.fromLTRB(
+                                                      70, 5, 100, 0),
+                                              child: Text(
+                                                item['name'].toString() +
+                                                    ' ' +
+                                                    item['last'].toString(),
+                                                style: TextStyle(
+                                                    color: Colors.black,
+                                                    fontWeight: FontWeight.bold,
+                                                    fontSize: 18),
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                        SizedBox(
+                                          height: 10,
+                                        ),
+                                        Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                          children: [
+                                            Text(
+                                              'Email Id:',
+                                              style: TextStyle(
+                                                  color: Colors.grey.shade700,
+                                                  fontWeight: FontWeight.bold),
+                                            ),
+                                            SizedBox(
+                                              width: 138,
+                                            ),
+                                            Text(
+                                              item['email'].toString(),
+                                              style: TextStyle(
+                                                  color: Colors.black,
+                                                  fontWeight: FontWeight.bold,
+                                                  fontSize: 16),
+                                            ),
+                                          ],
+                                        ),
+                                        Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                          children: [
+                                            Text(
+                                              'Create Date:',
+                                              style: TextStyle(
+                                                  color: Colors.grey.shade700,
+                                                  fontWeight: FontWeight.bold),
+                                            ),
+                                            SizedBox(
+                                              width: 117,
+                                            ),
+                                            Text(
+                                              item['date'].toString(),
+                                              style: TextStyle(
+                                                  color: Colors.black,
+                                                  fontWeight: FontWeight.bold,
+                                                  fontSize: 16),
+                                            ),
+                                          ],
+                                        ),
+                                        Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                          children: [
+                                            Text(
+                                              'Vehicle No:',
+                                              style: TextStyle(
+                                                  color: Colors.grey.shade700,
+                                                  fontWeight: FontWeight.bold),
+                                            ),
+                                            SizedBox(
+                                              width: 120,
+                                            ),
+                                            Text(
+                                              item['Vno'].toString(),
+                                              style: TextStyle(
+                                                  color: Colors.black,
+                                                  fontWeight: FontWeight.bold,
+                                                  fontSize: 16),
+                                            ),
+                                          ],
+                                        ),
+                                        Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                          children: [
+                                            Text(
+                                              'Vehicle Make:',
+                                              style: TextStyle(
+                                                  color: Colors.grey.shade700,
+                                                  fontWeight: FontWeight.bold),
+                                            ),
+                                            SizedBox(
+                                              width: 103,
+                                            ),
+                                            Text(
+                                              item['Vmake'].toString(),
+                                              style: TextStyle(
+                                                  color: Colors.black,
+                                                  fontWeight: FontWeight.bold,
+                                                  fontSize: 16),
+                                            ),
+                                          ],
+                                        ),
+                                        Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                          children: [
+                                            Text(
+                                              'Telephone No:',
+                                              style: TextStyle(
+                                                  color: Colors.grey.shade700,
+                                                  fontWeight: FontWeight.bold),
+                                            ),
+                                            SizedBox(
+                                              width: 100,
+                                            ),
+                                            Text(
+                                              item['tel'].toString(),
+                                              style: TextStyle(
+                                                  color: Colors.black,
+                                                  fontWeight: FontWeight.bold,
+                                                  fontSize: 16),
+                                            ),
+                                          ],
+                                        ),
+                                        Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                          children: [
+                                            Text(
+                                              'KMS:',
+                                              style: TextStyle(
+                                                  color: Colors.grey.shade700,
+                                                  fontWeight: FontWeight.bold),
+                                            ),
+                                            SizedBox(
+                                              width: 158,
+                                            ),
+                                            Text(
+                                              item['kms'].toString(),
+                                              style: TextStyle(
+                                                  color: Colors.black,
+                                                  fontWeight: FontWeight.bold,
+                                                  fontSize: 16),
+                                            ),
+                                          ],
+                                        ),
+                                        Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                          children: [
+                                            Text(
+                                              'Fuel:',
+                                              style: TextStyle(
+                                                  color: Colors.grey.shade700,
+                                                  fontWeight: FontWeight.bold),
+                                            ),
+                                            SizedBox(
+                                              width: 161,
+                                            ),
+                                            Text(
+                                              item['E'].toString(),
+                                              style: TextStyle(
+                                                  color: Colors.black,
+                                                  fontWeight: FontWeight.bold,
+                                                  fontSize: 16),
+                                            ),
+                                          ],
+                                        ),
+                                        Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                          children: [
+                                            Text(
+                                              'Customer Complaints:',
+                                              style: TextStyle(
+                                                  color: Colors.grey.shade700,
+                                                  fontWeight: FontWeight.bold),
+                                            ),
+                                            SizedBox(
+                                              width: 48,
+                                            ),
+                                            Text(
+                                              item['regular'].toString(),
+                                              style: TextStyle(
+                                                  color: Colors.black,
+                                                  fontWeight: FontWeight.bold,
+                                                  fontSize: 16),
+                                            ),
+                                          ],
+                                        ),
+                                      ],
                                     ),
-                                    // DataCell(Text(item['id'].toString())),
-                                    DataCell(Text(item['name'].toString())),
-                                    DataCell(Text(item['last'].toString())),
-                                    DataCell(Text(item['email'].toString())),
-                                    // DataCell(Text(item['date'].toString())),
-                                    // DataCell(Text(item['Vno'].toString())),
-                                    // DataCell(Text(item['Vmake'].toString())),
-                                    // DataCell(Text(item['tel'].toString())),
-                                    // DataCell(Text(item['kms'].toString())),
-                                    // DataCell(Text(item['E'].toString())),
-                                    // DataCell(Text(item['item'].toString())),
-                                    DataCell(Text(item['regular'].toString())),
-                                    // DataCell(
-                                    //   Image.network(item['front'].toString()),
-                                    // ),
-                                  ],
-                                );
-                              },
-                            ).toList(),
+                                  ),
+                                ),
+                              ),
+                            ),
                           ),
                         ),
-                      );
-                    }),
-              ),
+                      ),
+                    );
+                  }),
             ),
           ),
         ),

@@ -29,6 +29,11 @@ class _HomePageState extends State<HomePage> {
     width = MediaQuery.of(context).size.width;
     return Scaffold(
         appBar: AppBar(
+          leading: IconButton(
+              onPressed: () {
+                Navigator.pushNamed(context, '/signIn_screen');
+              },
+              icon: Icon(Icons.arrow_back)),
           title: Text(
             'Customer Details List',
             style: TextStyle(fontSize: 25),
@@ -91,7 +96,7 @@ class _HomePageState extends State<HomePage> {
                 width: width * 1.0,
               ),
               Container(
-                color: Colors.purple.shade50,
+                color: Colors.white,
                 child: ListView.builder(
                     scrollDirection: Axis.vertical,
                     itemCount: 1,
@@ -138,166 +143,179 @@ class _HomePageState extends State<HomePage> {
                                 Padding(
                                   padding: const EdgeInsets.fromLTRB(
                                       100, 30, 200, 5),
-                                  child: DataTable(
-                                    showCheckboxColumn: false,
-                                    border: TableBorder.all(
-                                        color: Colors.grey.shade600,
-                                        width: 0.3),
-                                    //columnSpacing: 2,
-                                    // horizontalMargin: 10,
-                                    columns: [
-                                      DataColumn(
-                                          label: Center(
-                                        //widthFactor: 0.5,
-                                        child: Text(
-                                          'User Id',
-                                          style: TextStyle(
-                                              fontSize: 15,
-                                              fontWeight: FontWeight.bold),
-                                        ),
-                                      )),
-                                      DataColumn(
-                                          label: Center(
-                                        child: Text('First Name',
+                                  child: Container(
+                                    decoration: BoxDecoration(
+                                        gradient: LinearGradient(
+                                      begin: Alignment.topRight,
+                                      end: Alignment.bottomLeft,
+                                      colors: [
+                                        Colors.green.shade100,
+                                        Colors.cyan,
+                                      ],
+                                    )),
+                                    child: DataTable(
+                                      showCheckboxColumn: false,
+                                      border: TableBorder.all(
+                                          color: Colors.grey.shade600,
+                                          width: 0.3),
+                                      //columnSpacing: 2,
+                                      // horizontalMargin: 10,
+                                      columns: [
+                                        DataColumn(
+                                            label: Center(
+                                          //widthFactor: 0.5,
+                                          child: Text(
+                                            'User Id',
                                             style: TextStyle(
                                                 fontSize: 15,
-                                                fontWeight: FontWeight.bold)),
-                                      )),
-                                      DataColumn(
-                                          label: Text('Last Name',
+                                                fontWeight: FontWeight.bold),
+                                          ),
+                                        )),
+                                        DataColumn(
+                                            label: Center(
+                                          child: Text('First Name',
                                               style: TextStyle(
                                                   fontSize: 15,
-                                                  fontWeight:
-                                                      FontWeight.bold))),
-                                      DataColumn(
-                                          label: Center(
-                                        child: Text('Email Id',
-                                            style: TextStyle(
-                                                fontSize: 15,
-                                                fontWeight: FontWeight.bold)),
-                                      )),
-
-                                      // DataColumn(
-                                      //     label: Center(
-                                      //   child: Text(' Create Date',
-                                      //       style: TextStyle(
-                                      //           fontSize: 15,
-                                      //           fontWeight: FontWeight.bold)),
-                                      // )),
-                                      // DataColumn(
-                                      //     label: Text('Vehicle No',
-                                      //         style: TextStyle(
-                                      //             fontSize: 15,
-                                      //             fontWeight: FontWeight.bold))),
-                                      // DataColumn(
-                                      //     label: Text('Vehicle Make',
-                                      //         style: TextStyle(
-                                      //             fontSize: 15,
-                                      //             fontWeight: FontWeight.bold))),
-                                      // DataColumn(
-                                      //     label: Text('Telephone No',
-                                      //         style: TextStyle(
-                                      //             fontSize: 15,
-                                      //             fontWeight: FontWeight.bold))),
-                                      // DataColumn(
-                                      //     label: Text('KMS',
-                                      //         style: TextStyle(
-                                      //             fontSize: 15,
-                                      //             fontWeight: FontWeight.bold))),
-                                      // DataColumn(
-                                      //     label: Text('Fuel',
-                                      //         style: TextStyle(
-                                      //             fontSize: 15,
-                                      //             fontWeight: FontWeight.bold))),
-                                      // DataColumn(
-                                      //     label: Center(
-                                      //   // widthFactor: 1.3,
-                                      //   child: Text('Selected Items',
-                                      //       style: TextStyle(
-                                      //           fontSize: 15,
-                                      //           fontWeight: FontWeight.bold)),
-                                      // )),
-                                      // DataColumn(
-                                      //     label: Text('Custmoer Complaints',
-                                      //         style: TextStyle(
-                                      //             fontSize: 15,
-                                      //             fontWeight: FontWeight.bold))),
-                                      // DataColumn(
-                                      //     label: Text('Front Image',
-                                      //         style: TextStyle(
-                                      //             fontSize: 15,
-                                      //             fontWeight: FontWeight.bold))),
-
-                                      DataColumn(
-                                          label: Text('Edit Action',
+                                                  fontWeight: FontWeight.bold)),
+                                        )),
+                                        DataColumn(
+                                            label: Text('Last Name',
+                                                style: TextStyle(
+                                                    fontSize: 15,
+                                                    fontWeight:
+                                                        FontWeight.bold))),
+                                        DataColumn(
+                                            label: Center(
+                                          child: Text('Email Id',
                                               style: TextStyle(
                                                   fontSize: 15,
-                                                  fontWeight:
-                                                      FontWeight.bold))),
-                                      DataColumn(
-                                          label: Text('Delete Action',
-                                              style: TextStyle(
-                                                  fontSize: 15,
-                                                  fontWeight:
-                                                      FontWeight.bold))),
-                                    ],
-                                    rows: List.generate(
-                                      vdetails.length,
-                                      (index) {
-                                        var item = vdetails[index];
-                                        final id = item['id'].toString();
+                                                  fontWeight: FontWeight.bold)),
+                                        )),
 
-                                        // print(item);
-                                        return DataRow(
-                                            onLongPress: () {
-                                              fetchById(id);
-                                            },
-                                            cells: [
-                                              DataCell(
-                                                Text('${index + 1}'),
-                                              ),
-                                              DataCell(Text(
-                                                  item['name'].toString())),
-                                              DataCell(Text(
-                                                  item['last'].toString())),
-                                              DataCell(Text(
-                                                  item['email'].toString())),
-                                              // DataCell(Text(item['date'].toString())),
-                                              // DataCell(Text(item['Vno'].toString())),
-                                              // DataCell(Text(item['Vmake'].toString())),
-                                              // DataCell(Text(item['tel'].toString())),
-                                              // DataCell(Text(item['kms'].toString())),
-                                              // DataCell(Text(item['E'].toString())),
-                                              // DataCell(Text(item['item'].toString())),
-                                              // DataCell(Text(item['regular'].toString())),
-                                              // DataCell(Text(item['front'].toString())),
+                                        // DataColumn(
+                                        //     label: Center(
+                                        //   child: Text(' Create Date',
+                                        //       style: TextStyle(
+                                        //           fontSize: 15,
+                                        //           fontWeight: FontWeight.bold)),
+                                        // )),
+                                        // DataColumn(
+                                        //     label: Text('Vehicle No',
+                                        //         style: TextStyle(
+                                        //             fontSize: 15,
+                                        //             fontWeight: FontWeight.bold))),
+                                        // DataColumn(
+                                        //     label: Text('Vehicle Make',
+                                        //         style: TextStyle(
+                                        //             fontSize: 15,
+                                        //             fontWeight: FontWeight.bold))),
+                                        // DataColumn(
+                                        //     label: Text('Telephone No',
+                                        //         style: TextStyle(
+                                        //             fontSize: 15,
+                                        //             fontWeight: FontWeight.bold))),
+                                        // DataColumn(
+                                        //     label: Text('KMS',
+                                        //         style: TextStyle(
+                                        //             fontSize: 15,
+                                        //             fontWeight: FontWeight.bold))),
+                                        // DataColumn(
+                                        //     label: Text('Fuel',
+                                        //         style: TextStyle(
+                                        //             fontSize: 15,
+                                        //             fontWeight: FontWeight.bold))),
+                                        // DataColumn(
+                                        //     label: Center(
+                                        //   // widthFactor: 1.3,
+                                        //   child: Text('Selected Items',
+                                        //       style: TextStyle(
+                                        //           fontSize: 15,
+                                        //           fontWeight: FontWeight.bold)),
+                                        // )),
+                                        // DataColumn(
+                                        //     label: Text('Custmoer Complaints',
+                                        //         style: TextStyle(
+                                        //             fontSize: 15,
+                                        //             fontWeight: FontWeight.bold))),
+                                        // DataColumn(
+                                        //     label: Text('Front Image',
+                                        //         style: TextStyle(
+                                        //             fontSize: 15,
+                                        //             fontWeight: FontWeight.bold))),
 
-                                              DataCell(TextButton(
-                                                onPressed: () {
-                                                  navigateToEditPage(item);
-                                                },
-                                                child: Text(
-                                                  'Edit',
-                                                  style: TextStyle(
-                                                      color: Colors
-                                                          .green.shade900),
+                                        DataColumn(
+                                            label: Text('Edit Action',
+                                                style: TextStyle(
+                                                    fontSize: 15,
+                                                    fontWeight:
+                                                        FontWeight.bold))),
+                                        DataColumn(
+                                            label: Text('Delete Action',
+                                                style: TextStyle(
+                                                    fontSize: 15,
+                                                    fontWeight:
+                                                        FontWeight.bold))),
+                                      ],
+                                      rows: List.generate(
+                                        vdetails.length,
+                                        (index) {
+                                          var item = vdetails[index];
+                                          final id = item['id'].toString();
+
+                                          // print(item);
+                                          return DataRow(
+                                              onSelectChanged: (selected) {
+                                                if (selected!) {
+                                                  fetchById(id);
+                                                }
+                                              },
+                                              cells: [
+                                                DataCell(
+                                                  Text('${index + 1}'),
                                                 ),
-                                              )),
-                                              DataCell(TextButton(
-                                                onPressed: () {
-                                                  deleteById(id);
-                                                },
-                                                child: Text(
-                                                  'Delete',
-                                                  style: TextStyle(
-                                                      color:
-                                                          Colors.red.shade900),
-                                                ),
-                                              )),
-                                            ]);
-                                      },
-                                    ).toList(),
-                                    //showBottomBorder: true,
+                                                DataCell(Text(
+                                                    item['name'].toString())),
+                                                DataCell(Text(
+                                                    item['last'].toString())),
+                                                DataCell(Text(
+                                                    item['email'].toString())),
+                                                // DataCell(Text(item['date'].toString())),
+                                                // DataCell(Text(item['Vno'].toString())),
+                                                // DataCell(Text(item['Vmake'].toString())),
+                                                // DataCell(Text(item['tel'].toString())),
+                                                // DataCell(Text(item['kms'].toString())),
+                                                // DataCell(Text(item['E'].toString())),
+                                                // DataCell(Text(item['item'].toString())),
+                                                // DataCell(Text(item['regular'].toString())),
+                                                // DataCell(Text(item['front'].toString())),
+
+                                                DataCell(TextButton(
+                                                  onPressed: () {
+                                                    navigateToEditPage(item);
+                                                  },
+                                                  child: Text(
+                                                    'Edit',
+                                                    style: TextStyle(
+                                                        color: Colors
+                                                            .green.shade900),
+                                                  ),
+                                                )),
+                                                DataCell(TextButton(
+                                                  onPressed: () {
+                                                    deleteById(id);
+                                                  },
+                                                  child: Text(
+                                                    'Delete',
+                                                    style: TextStyle(
+                                                        color: Colors
+                                                            .red.shade900),
+                                                  ),
+                                                )),
+                                              ]);
+                                        },
+                                      ).toList(),
+                                      //showBottomBorder: true,
+                                    ),
                                   ),
                                 ),
                               ],
@@ -334,7 +352,7 @@ class _HomePageState extends State<HomePage> {
       // setState(() {
       //   vdetails = result;
       // });
-      Navigator.pushNamed(context, '/view');
+      Navigator.pushNamed(context, '/viewalldata');
     }
   }
 
@@ -366,6 +384,7 @@ class _HomePageState extends State<HomePage> {
     final url = 'http://192.168.1.4:8000/api/view?search=' + data;
     final uri = Uri.parse(url);
     final response = await http.get(uri);
+    print(response.body);
     if (response.statusCode == 200) {
       //give me a data as decode format
       final json = jsonDecode(response.body) as Map;

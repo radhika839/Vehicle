@@ -32,7 +32,7 @@ class _SignInPageState extends State<SignInPage> {
     // const url = 'http://192.168.1.10:8000/api/signIn';
     const url = 'http://192.168.1.4:8000/api/signIn';
     //print(url);
-    print(jsonEncode(body));
+    // print(jsonEncode(body));
     final uri = Uri.parse(url);
     final response = await http.post(
       uri,
@@ -48,7 +48,7 @@ class _SignInPageState extends State<SignInPage> {
       showSuccessMessage('Login Successfully');
       Navigator.pushNamed(context, '/BottomNavigationBar');
     } else {
-      print('failed');
+      showErrorMessage('Login Failed');
     }
   }
 
@@ -79,16 +79,30 @@ class _SignInPageState extends State<SignInPage> {
                 child: Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 280),
                   child: Card(
-                    color: Colors.purple.shade50,
-                    child: TextFormField(
-                        controller: emailController,
-                        decoration: InputDecoration(
-                          hintText: 'Enter Your Email',
-                          label: Text('Email'),
-                          icon: Icon(Icons.person),
-                          border: InputBorder.none,
-                        ),
-                        validator: validateEmail),
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10)),
+                    clipBehavior: Clip.antiAliasWithSaveLayer,
+                    //color: Colors.purple.shade50,
+                    child: Container(
+                      decoration: BoxDecoration(
+                          gradient: LinearGradient(
+                        begin: Alignment.topRight,
+                        end: Alignment.bottomLeft,
+                        colors: [
+                          Colors.green.shade100,
+                          Colors.cyan,
+                        ],
+                      )),
+                      child: TextFormField(
+                          controller: emailController,
+                          decoration: InputDecoration(
+                            hintText: 'Enter Your Email',
+                            label: Text('Email'),
+                            icon: Icon(Icons.person),
+                            border: InputBorder.none,
+                          ),
+                          validator: validateEmail),
+                    ),
                   ),
                 ),
               ),
@@ -96,22 +110,36 @@ class _SignInPageState extends State<SignInPage> {
                 child: Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 280),
                   child: Card(
-                    color: Colors.purple.shade50,
-                    child: TextFormField(
-                        controller: passwordController,
-                        obscureText: true,
-                        decoration: InputDecoration(
-                          hintText: 'Password',
-                          label: Text('Password'),
-                          icon: Icon(Icons.lock),
-                          border: InputBorder.none,
-                        ),
-                        validator: (value) {
-                          if (value!.length < 3) {
-                            return 'Password Is Too Short';
-                          }
-                          return null;
-                        }),
+                    // color: Colors.purple.shade50,
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10)),
+                    clipBehavior: Clip.antiAliasWithSaveLayer,
+                    child: Container(
+                      decoration: BoxDecoration(
+                          gradient: LinearGradient(
+                        begin: Alignment.topRight,
+                        end: Alignment.bottomLeft,
+                        colors: [
+                          Colors.green.shade100,
+                          Colors.cyan,
+                        ],
+                      )),
+                      child: TextFormField(
+                          controller: passwordController,
+                          obscureText: true,
+                          decoration: InputDecoration(
+                            hintText: 'Password',
+                            label: Text('Password'),
+                            icon: Icon(Icons.lock),
+                            border: InputBorder.none,
+                          ),
+                          validator: (value) {
+                            if (value!.length < 3) {
+                              return 'Password Is Too Short';
+                            }
+                            return null;
+                          }),
+                    ),
                   ),
                 ),
               ),
@@ -163,6 +191,11 @@ class _SignInPageState extends State<SignInPage> {
   }
 
   void showSuccessMessage(String message) {
+    final snackBar = SnackBar(content: Text(message));
+    ScaffoldMessenger.of(context).showSnackBar(snackBar);
+  }
+
+  void showErrorMessage(String message) {
     final snackBar = SnackBar(content: Text(message));
     ScaffoldMessenger.of(context).showSnackBar(snackBar);
   }

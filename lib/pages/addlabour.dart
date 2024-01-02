@@ -34,7 +34,7 @@ class _AddLabourState extends State<AddLabour> {
     return Scaffold(
         appBar: AppBar(
           leading: IconButton(
-            icon: Icon(Icons.arrow_back_ios_new_sharp),
+            icon: Icon(Icons.arrow_back),
             onPressed: () {
               Navigator.pushNamed(context, '/BottomNavigationBar');
             },
@@ -69,30 +69,56 @@ class _AddLabourState extends State<AddLabour> {
               child: Column(
                 children: [
                   Card(
-                    color: Colors.purple.shade50,
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10)),
+                    clipBehavior: Clip.antiAliasWithSaveLayer,
                     margin: EdgeInsets.symmetric(horizontal: 350),
-                    child: TextFormField(
-                      controller: labourNameController,
-                      decoration: InputDecoration(
-                          hintText: 'Enter Labour Name',
-                          label: Text('Labour Name'),
-                          icon: Icon(Icons.person),
-                          border: InputBorder.none),
+                    child: Container(
+                      decoration: BoxDecoration(
+                          gradient: LinearGradient(
+                        begin: Alignment.topRight,
+                        end: Alignment.bottomLeft,
+                        colors: [
+                          Colors.green.shade100,
+                          Colors.cyan,
+                        ],
+                      )),
+                      child: TextFormField(
+                        controller: labourNameController,
+                        decoration: InputDecoration(
+                            hintText: 'Enter Labour Name',
+                            label: Text('Labour Name'),
+                            icon: Icon(Icons.person),
+                            border: InputBorder.none),
+                      ),
                     ),
                   ),
                   SizedBox(
                     height: 10,
                   ),
                   Card(
-                    color: Colors.purple.shade50,
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10)),
+                    clipBehavior: Clip.antiAliasWithSaveLayer,
                     margin: EdgeInsets.symmetric(horizontal: 350),
-                    child: TextFormField(
-                      controller: labourSalaryController,
-                      decoration: InputDecoration(
-                          hintText: 'Enter Labour Salary',
-                          label: Text('Labour Salary'),
-                          icon: Icon(Icons.attach_money),
-                          border: InputBorder.none),
+                    child: Container(
+                      decoration: BoxDecoration(
+                          gradient: LinearGradient(
+                        begin: Alignment.topRight,
+                        end: Alignment.bottomLeft,
+                        colors: [
+                          Colors.green.shade100,
+                          Colors.cyan,
+                        ],
+                      )),
+                      child: TextFormField(
+                        controller: labourSalaryController,
+                        decoration: InputDecoration(
+                            hintText: 'Enter Labour Salary',
+                            label: Text('Labour Salary'),
+                            icon: Icon(Icons.attach_money),
+                            border: InputBorder.none),
+                      ),
                     ),
                   ),
                   SizedBox(
@@ -114,7 +140,7 @@ class _AddLabourState extends State<AddLabour> {
                           style: TextStyle(color: Colors.black, fontSize: 15),
                         ),
                         style: ElevatedButton.styleFrom(
-                          backgroundColor: Colors.blue.shade400,
+                          backgroundColor: Colors.blue,
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(40),
                           ),

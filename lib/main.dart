@@ -8,6 +8,7 @@ import 'package:vehicle_workshop/pages/homePage.dart';
 import 'package:vehicle_workshop/pages/labour.dart';
 import 'package:vehicle_workshop/pages/product.dart';
 import 'package:vehicle_workshop/pages/view.dart';
+import 'package:vehicle_workshop/pages/viewalldata.dart';
 import 'package:vehicle_workshop/screens/signIn_screen.dart';
 import 'package:vehicle_workshop/screens/signup_screen.dart';
 import 'package:vehicle_workshop/screens/welcome_screen.dart';
@@ -18,7 +19,7 @@ void main() {
     initialRoute: '/',
     routes: {
       '/': (context) => MainScreen(),
-      //'/welcome_screen2': (context) => MainScreen(),
+      '/viewalldata': (context) => ViewAllData(),
       '/signIn_screen': (context) => SignInPage(),
       '/signup_screen': (context) => SignUpPage(),
       '/BottomNavigationBar': (context) => MyBottomNavigationBar(),

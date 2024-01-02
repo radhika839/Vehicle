@@ -48,7 +48,7 @@ class _SignUpPageState extends State<SignUpPage> {
       body: jsonEncode(body),
       headers: {'Content-Type': 'application/json'},
     );
-    print(response.body);
+    // print(response.body);
     // final message = jsonDecode(response.body);
     // print(message);
 
@@ -83,38 +83,34 @@ class _SignUpPageState extends State<SignUpPage> {
                 child: Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 450),
                   child: Card(
-                    color: Colors.purple.shade50,
-                    child: TextFormField(
-                        controller: nameController,
-                        decoration: InputDecoration(
-                          hintText: 'Enter Your Name',
-                          label: Text('Name'),
-                          icon: Icon(Icons.person),
-                          border: InputBorder.none,
-                        ),
-                        validator: (value) {
-                          if (value!.isEmpty) {
-                            return 'please Enter Your Name';
-                          }
-                          return null;
-                        }),
-                  ),
-                ),
-              ),
-              Center(
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 450),
-                  child: Card(
-                    color: Colors.purple.shade50,
-                    child: TextFormField(
-                      controller: emailController,
-                      decoration: InputDecoration(
-                        hintText: 'Enter Email',
-                        label: Text('Email'),
-                        icon: Icon(Icons.email),
-                        border: InputBorder.none,
-                      ),
-                      validator: validateEmail,
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10)),
+                    clipBehavior: Clip.antiAliasWithSaveLayer,
+                    //  color: Colors.purple.shade50,
+                    child: Container(
+                      decoration: BoxDecoration(
+                          gradient: LinearGradient(
+                        begin: Alignment.topRight,
+                        end: Alignment.bottomLeft,
+                        colors: [
+                          Colors.green.shade100,
+                          Colors.cyan,
+                        ],
+                      )),
+                      child: TextFormField(
+                          controller: nameController,
+                          decoration: InputDecoration(
+                            hintText: 'Enter Your Name',
+                            label: Text('Name'),
+                            icon: Icon(Icons.person),
+                            border: InputBorder.none,
+                          ),
+                          validator: (value) {
+                            if (value!.isEmpty) {
+                              return 'please Enter Your Name';
+                            }
+                            return null;
+                          }),
                     ),
                   ),
                 ),
@@ -123,22 +119,31 @@ class _SignUpPageState extends State<SignUpPage> {
                 child: Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 450),
                   child: Card(
-                    color: Colors.purple.shade50,
-                    child: TextFormField(
-                        obscureText: true,
-                        controller: passwordController,
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10)),
+                    clipBehavior: Clip.antiAliasWithSaveLayer,
+                    //   color: Colors.purple.shade50,
+                    child: Container(
+                      decoration: BoxDecoration(
+                          gradient: LinearGradient(
+                        begin: Alignment.topRight,
+                        end: Alignment.bottomLeft,
+                        colors: [
+                          Colors.green.shade100,
+                          Colors.cyan,
+                        ],
+                      )),
+                      child: TextFormField(
+                        controller: emailController,
                         decoration: InputDecoration(
-                          hintText: 'Enter Password',
-                          label: Text('Password'),
-                          icon: Icon(Icons.lock),
+                          hintText: 'Enter Email',
+                          label: Text('Email'),
+                          icon: Icon(Icons.email),
                           border: InputBorder.none,
                         ),
-                        validator: (value) {
-                          if (value!.length < 3) {
-                            return 'Password Is Too Short';
-                          }
-                          return null;
-                        }),
+                        validator: validateEmail,
+                      ),
+                    ),
                   ),
                 ),
               ),
@@ -146,25 +151,76 @@ class _SignUpPageState extends State<SignUpPage> {
                 child: Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 450),
                   child: Card(
-                    color: Colors.purple.shade50,
-                    child: TextFormField(
-                        obscureText: true,
-                        controller: confirmPasswordController,
-                        decoration: InputDecoration(
-                          hintText: 'Confirm Your Password',
-                          label: Text('Confirm Password'),
-                          icon: Icon(Icons.lock),
-                          border: InputBorder.none,
-                        ),
-                        validator: (value) {
-                          if (value!.length < 3) {
-                            return 'Password Is Too Short';
-                          }
-                          if (value != passwordController.text) {
-                            return 'Enter Correct Password';
-                          }
-                          return null;
-                        }),
+                    //  color: Colors.purple.shade50,
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10)),
+                    clipBehavior: Clip.antiAliasWithSaveLayer,
+                    child: Container(
+                      decoration: BoxDecoration(
+                          gradient: LinearGradient(
+                        begin: Alignment.topRight,
+                        end: Alignment.bottomLeft,
+                        colors: [
+                          Colors.green.shade100,
+                          Colors.cyan,
+                        ],
+                      )),
+                      child: TextFormField(
+                          obscureText: true,
+                          controller: passwordController,
+                          decoration: InputDecoration(
+                            hintText: 'Enter Password',
+                            label: Text('Password'),
+                            icon: Icon(Icons.lock),
+                            border: InputBorder.none,
+                          ),
+                          validator: (value) {
+                            if (value!.length < 3) {
+                              return 'Password Is Too Short';
+                            }
+                            return null;
+                          }),
+                    ),
+                  ),
+                ),
+              ),
+              Center(
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 450),
+                  child: Card(
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10)),
+                    clipBehavior: Clip.antiAliasWithSaveLayer,
+                    // color: Colors.purple.shade50,
+                    child: Container(
+                      decoration: BoxDecoration(
+                          gradient: LinearGradient(
+                        begin: Alignment.topRight,
+                        end: Alignment.bottomLeft,
+                        colors: [
+                          Colors.green.shade100,
+                          Colors.cyan,
+                        ],
+                      )),
+                      child: TextFormField(
+                          obscureText: true,
+                          controller: confirmPasswordController,
+                          decoration: InputDecoration(
+                            hintText: 'Confirm Your Password',
+                            label: Text('Confirm Password'),
+                            icon: Icon(Icons.lock),
+                            border: InputBorder.none,
+                          ),
+                          validator: (value) {
+                            if (value!.length < 3) {
+                              return 'Password Is Too Short';
+                            }
+                            if (value != passwordController.text) {
+                              return 'Enter Correct Password';
+                            }
+                            return null;
+                          }),
+                    ),
                   ),
                 ),
               ),

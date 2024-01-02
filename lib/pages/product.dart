@@ -25,7 +25,7 @@ class _ProductPageState extends State<ProductPage> {
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
-          icon: Icon(Icons.arrow_back_ios_new_sharp),
+          icon: Icon(Icons.arrow_back),
           onPressed: () {
             Navigator.pushNamed(context, '/BottomNavigationBar');
           },
@@ -42,7 +42,6 @@ class _ProductPageState extends State<ProductPage> {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             Container(
-              color: Colors.purple.shade50,
               height: 100,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
@@ -70,17 +69,24 @@ class _ProductPageState extends State<ProductPage> {
             ),
             Container(
               height: 692,
-              color: Colors.purple.shade50,
               child: Padding(
                 padding: const EdgeInsets.fromLTRB(180, 70, 230, 90),
                 child: Card(
-                  color: Colors.purple.shade100,
                   child: ListView.builder(
                       itemCount: 1,
                       itemBuilder: (context, index) {
                         return SingleChildScrollView(
                           scrollDirection: Axis.horizontal,
                           child: Container(
+                            decoration: BoxDecoration(
+                                gradient: LinearGradient(
+                              begin: Alignment.topRight,
+                              end: Alignment.bottomLeft,
+                              colors: [
+                                Colors.green.shade100,
+                                Colors.cyan,
+                              ],
+                            )),
                             child: Column(
                               children: [
                                 SizedBox(
