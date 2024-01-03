@@ -384,7 +384,7 @@ class _HomePageState extends State<HomePage> {
     final url = 'http://192.168.1.4:8000/api/view?search=' + data;
     final uri = Uri.parse(url);
     final response = await http.get(uri);
-    print(response.body);
+    //print(response.body);
     if (response.statusCode == 200) {
       //give me a data as decode format
       final json = jsonDecode(response.body) as Map;

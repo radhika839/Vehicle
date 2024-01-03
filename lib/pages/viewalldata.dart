@@ -84,7 +84,7 @@ class _ViewAllDataState extends State<ViewAllData> {
                           'Email Id',
                         ),
                         SizedBox(
-                          width: 128,
+                          width: 125,
                         ),
                         Text(
                           details['vdetails']['email'].toString(),
@@ -107,7 +107,7 @@ class _ViewAllDataState extends State<ViewAllData> {
                           'Date',
                         ),
                         SizedBox(
-                          width: 150,
+                          width: 147,
                         ),
                         Text(
                           details['vdetails']['date'].toString(),
@@ -245,7 +245,7 @@ class _ViewAllDataState extends State<ViewAllData> {
                           'Items',
                         ),
                         SizedBox(
-                          width: 151,
+                          width: 145,
                         ),
                         Text(
                           details['vdetails']['item'].toString(),

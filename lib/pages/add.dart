@@ -41,27 +41,55 @@ class _SignUpPageState extends State<AddPage> {
     if (todo != null) {
       isEdit = true;
       final name = todo['name'].toString();
-      final last = todo['last'].toString();
-      final email = todo['email'].toString();
+      final lastName = todo['last'].toString();
+      final emailId = todo['email'].toString();
       final date = todo['date'].toString();
-      final Vno = todo['Vno'].toString();
-      final Vmake = todo['Vmake'].toString();
-      final tel = todo['tel'].toString();
+      final vehicleNo = todo['Vno'].toString();
+      final vehicleModel = todo['Vmake'].toString();
+      final phoneNo = todo['tel'].toString();
       final kms = todo['kms'].toString();
-      final E = todo['E'].toString();
-
-      final regular = todo['regular'].toString();
+      final fuel = todo['E'].toString();
+      final itemString = todo['item'].toString();
+      final complaints = todo['regular'].toString();
+      // print(itemString);
+      if (itemString != null) {
+        List items = itemString.split(',');
+        // print(items);
+        if (items.contains('Jack & Tommy')) {
+          jack = true;
+        }
+        if (items.contains('Stepney')) {
+          stepney = true;
+        }
+        if (items.contains('Tool Kit')) {
+          tool_kit = true;
+        }
+        if (items.contains('Tape')) {
+          tape = true;
+        }
+        if (items.contains('Battery')) {
+          battery = true;
+        }
+        if (items.contains('Mirror RH')) {
+          mirror_rh = true;
+        }
+        if (items.contains('Mirror LH')) {
+          mirrior_lh = true;
+        }
+        if (items.contains('Mats')) {
+          mats = true;
+        }
+      }
       nameController.text = name;
-      lastController.text = last;
-      emailController.text = email;
+      lastController.text = lastName;
+      emailController.text = emailId;
       dateController.text = date;
-      vnoController.text = Vno;
-      vmakeController.text = Vmake;
-      telController.text = tel;
+      vnoController.text = vehicleNo;
+      vmakeController.text = vehicleModel;
+      telController.text = phoneNo;
       kmsController.text = kms;
-      EController.text = E;
-
-      regularController.text = regular;
+      EController.text = fuel;
+      regularController.text = complaints;
     }
   }
 
@@ -386,7 +414,7 @@ class _SignUpPageState extends State<AddPage> {
                               Colors.cyan,
                             ],
                           )),
-                          child: Text('Jack&Tommy')),
+                          child: Text('Jack & Tommy')),
                       visualDensity: VisualDensity.compact,
                     ),
                   ),
@@ -708,7 +736,7 @@ class _SignUpPageState extends State<AddPage> {
                             telController.text.toString(),
                             kmsController.text.toString(),
                             EController.text.toString(),
-                            jack.toString() as bool,
+                            jack,
                             stepney,
                             tool_kit,
                             tape,
@@ -742,7 +770,7 @@ class _SignUpPageState extends State<AddPage> {
                     style: TextStyle(color: Colors.black, fontSize: 22),
                   ),
                   style: ElevatedButton.styleFrom(
-                    padding: EdgeInsets.symmetric(vertical: 15, horizontal: 10),
+                    padding: EdgeInsets.symmetric(vertical: 12, horizontal: 12),
                     backgroundColor: Colors.blue,
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(40),
@@ -759,14 +787,14 @@ class _SignUpPageState extends State<AddPage> {
 
   Future<void> updateData(
       String name,
-      String last,
-      String email,
+      String lastName,
+      String emailId,
       String date,
-      String Vno,
-      String Vmake,
-      String tel,
+      String vehicleNo,
+      String vehicleModel,
+      String phoneNo,
       String kms,
-      String E,
+      String fuel,
       bool jack,
       bool stepney,
       bool tool_kit,
@@ -775,11 +803,11 @@ class _SignUpPageState extends State<AddPage> {
       bool mirror_rh,
       bool mirrior_lh,
       bool mats,
-      String regular) async {
+      String complaints) async {
     List itemList = [];
-
+    //print(itemList);
     if (jack == true) {
-      itemList.add('Jack&Tommy');
+      itemList.add('Jack & Tommy');
     }
     if (stepney == true) {
       itemList.add('Stepney');
@@ -803,6 +831,7 @@ class _SignUpPageState extends State<AddPage> {
     if (mats == true) {
       itemList.add('Mats');
     }
+    // print(itemList);
     final todo = widget.todo;
     if (todo == null) {
       print('you can not call updated without the data');
@@ -812,18 +841,18 @@ class _SignUpPageState extends State<AddPage> {
     final id = todo['id'].toString();
     final body = {
       "name": name,
-      "last": last,
-      "email": email,
+      "last": lastName,
+      "email": emailId,
       "date": date,
-      "Vno": Vno,
-      "Vmake": Vmake,
-      "tel": tel,
+      "Vno": vehicleNo,
+      "Vmake": vehicleModel,
+      "tel": phoneNo,
       "kms": kms,
-      "E": E,
+      "E": fuel,
       "item": itemList,
-      "regular": regular
+      "regular": complaints
     };
-    print(itemList);
+    // print(itemList);
     // print(body);
     final url = 'http://192.168.1.4:8000/api/update/$id';
     final uri = Uri.parse(url);
@@ -848,14 +877,14 @@ class _SignUpPageState extends State<AddPage> {
 
   Future<void> AddData(
       String name,
-      String last,
-      String email,
+      String lastName,
+      String emailId,
       String date,
-      String Vno,
-      String Vmake,
-      String tel,
+      String vehicleNo,
+      String vehicleModel,
+      String phoneNo,
       String kms,
-      String E,
+      String fuel,
       bool jack,
       bool stepney,
       bool tool_kit,
@@ -864,11 +893,11 @@ class _SignUpPageState extends State<AddPage> {
       bool mirror_rh,
       bool mirrior_lh,
       bool mats,
-      String regular) async {
+      String complaints) async {
     List itemList = [];
 
     if (jack == true) {
-      itemList.add('Jack&Tommy');
+      itemList.add('Jack & Tommy');
     }
     if (stepney == true) {
       itemList.add('Stepney');
@@ -894,21 +923,21 @@ class _SignUpPageState extends State<AddPage> {
     }
     final body = {
       "name": name,
-      "last": last,
-      "email": email,
+      "last": lastName,
+      "email": emailId,
       "date": date,
-      "Vno": Vno,
-      "Vmake": Vmake,
-      "tel": tel,
+      "Vno": vehicleNo,
+      "Vmake": vehicleModel,
+      "tel": phoneNo,
       "kms": kms,
-      "E": E,
+      "E": fuel,
       "item": itemList,
-      "regular": regular
+      "regular": complaints
     };
     //print(body);
     //print(email);
     //print(tel);
-    print(itemList);
+    //print(itemList);
     const url = 'http://192.168.1.4:8000/api/insertdata';
     //const url = 'http://192.168.1.4:8000/api/signin';
     //print(jsonEncode(body));
