@@ -1,7 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
-import 'package:vehicle_workshop/pages/homePage.dart';
+import 'package:vehicle_workshop/pages/homepage1.dart';
 
 class ViewAllData extends StatefulWidget {
   const ViewAllData({super.key});
@@ -196,36 +196,15 @@ class _ViewAllDataState extends State<ViewAllData> {
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
                         Text(
-                          'KMS',
+                          'Vehicle Inventory',
                         ),
                         SizedBox(
-                          width: 150,
+                          width: 70,
                         ),
                         Text(
-                          details['vdetails']['kms'].toString(),
-                          style: TextStyle(
-                              fontSize: 15, fontWeight: FontWeight.bold),
-                        ),
-                      ],
-                    ),
-                    Divider(
-                      color: Colors.purple.shade100,
-                      thickness: 0.5,
-                    ),
-                    SizedBox(
-                      height: 10,
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        Text(
-                          'Fuel',
-                        ),
-                        SizedBox(
-                          width: 153,
-                        ),
-                        Text(
-                          details['vdetails']['E'].toString(),
+                          details['vdetails']['kms'].toString() +
+                              'kms/' +
+                              details['vdetails']['E'].toString(),
                           style: TextStyle(
                               fontSize: 15, fontWeight: FontWeight.bold),
                         ),

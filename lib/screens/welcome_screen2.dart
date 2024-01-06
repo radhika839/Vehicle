@@ -252,7 +252,9 @@ class _MainScreenState extends State<MainScreen> {
                                               width: 158,
                                             ),
                                             Text(
-                                              item['kms'].toString(),
+                                              item['kms'].toString() +
+                                                  'kms/' +
+                                                  item['E'].toString(),
                                               style: TextStyle(
                                                   color: Colors.black,
                                                   fontWeight: FontWeight.bold,

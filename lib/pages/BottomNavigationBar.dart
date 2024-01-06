@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:vehicle_workshop/pages/homePage.dart';
+import 'package:vehicle_workshop/pages/homepage1.dart';
 import 'package:vehicle_workshop/pages/labour.dart';
 import 'package:vehicle_workshop/pages/product.dart';
 
@@ -12,7 +13,7 @@ class MyBottomNavigationBar extends StatefulWidget {
 
 class _MyBottomNavigationBarState extends State<MyBottomNavigationBar> {
   int currentIndex = 0;
-  final List<Widget> children = [HomePage(), ProductPage(), LabourData()];
+  final List<Widget> children = [HomePage1(), ProductPage(), LabourData()];
   void onTappedBar(int index) {
     setState(() {
       currentIndex = index;

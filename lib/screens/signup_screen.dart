@@ -29,15 +29,15 @@ class _SignUpPageState extends State<SignUpPage> {
 
   Future<void> signUpscreen(
       String name, String email, String password, String confirm) async {
-    print('hey');
+    //print('hey');
     final body = {
       'name': name,
       'email': email,
       'password': password,
       'confirm': confirm
     };
-    //print(email);
-    //print(password);
+    // print(email);
+    // print(password);
     //const url = 'http://192.168.1.10:8000/api/signUp';
     const url = 'http://192.168.1.4:8000/api/signUp';
     //print(url);
@@ -48,7 +48,7 @@ class _SignUpPageState extends State<SignUpPage> {
       body: jsonEncode(body),
       headers: {'Content-Type': 'application/json'},
     );
-    // print(response.body);
+    //print(response.body);
     // final message = jsonDecode(response.body);
     // print(message);
 
